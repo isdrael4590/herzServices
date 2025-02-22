@@ -1,0 +1,11 @@
+{
+    "name": "Informat",
+    "alias": "informat",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Informat\\Providers\\InformatServiceProvider"
+    ],
+    "files": []
+}
