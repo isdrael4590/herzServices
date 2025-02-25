@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Informat\Entities;
+namespace Modules\Work_orders\Entities;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
@@ -8,8 +8,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
- 
-class Institute extends Model implements HasMedia
+
+class Work_orders extends Model
 {
     use HasFactory, InteractsWithMedia;
 
@@ -17,13 +17,13 @@ class Institute extends Model implements HasMedia
     protected $with = ['media'];
 
 
-    public function institute() {
-        return $this->hasMany(Institute::class, 'institute_id', 'id');
+    public function Work_orders() {
+        return $this->hasMany(Work_orders::class, 'Work_orders_id', 'id');
     }
 
     public function registerMediaCollections(): void {
-        $this->addMediaCollection('institutes')
-            ->useFallbackUrl('/institutes/fallback_insitute_image.png');
+        $this->addMediaCollection('Work_orders')
+            ->useFallbackUrl('/Work_orders/fallback_insitute_image.png');
     }
 
     public function registerMediaConversions(Media $media = null): void {

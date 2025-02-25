@@ -16,6 +16,11 @@
         "vite": "^4.4.7"
     },
     "dependencies": {
+        "@fullcalendar/core": "^6.1.15",
+        "@fullcalendar/daygrid": "^6.1.15",
+        "@fullcalendar/interaction": "^6.1.15",
+        "@fullcalendar/list": "^6.1.15",
+        "@fullcalendar/timegrid": "^6.1.15",
         "autoprefixer": "^10.3.1",
         "jsbarcode": "^3.11.6"
     },

@@ -1,0 +1,11 @@
+{
+    "name": "Calendarmtto",
+    "alias": "calendarmtto",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Calendarmtto\\Providers\\CalendarmttoServiceProvider"
+    ],
+    "files": []
+}

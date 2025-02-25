@@ -4,5 +4,8 @@
     "User": true,
     "Setting": true,
     "Reports": true,
-    "Informat": true
+    "Informat": true,
+    "Calendarmtto": true,
+    "Asset": true,
+    "Workorder": true
 }

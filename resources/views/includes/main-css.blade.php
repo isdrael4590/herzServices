@@ -6,7 +6,6 @@
 <!-- Bootstrap Icons -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 <script src="https://cdn.tailwindcss.com"></script>
-
 @yield('third_party_stylesheets')
 
 @stack('page_css')
