@@ -1,8 +1,8 @@
 {
-    "Machine": true,
     "Upload": true,
     "User": true,
     "Setting": true,
-    "Reports": true,
-    "Informat": true
+    "ConfigurateBase": true,
+    "AssetManagement": true,
+    "WorkOrderMaintenance": true
 }

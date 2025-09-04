@@ -1,0 +1,11 @@
+{
+    "name": "WorkOrderMaintenance",
+    "alias": "workordermaintenance",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\WorkOrderMaintenance\\Providers\\WorkOrderMaintenanceServiceProvider"
+    ],
+    "files": []
+}

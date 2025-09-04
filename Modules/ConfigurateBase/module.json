@@ -1,0 +1,11 @@
+{
+    "name": "ConfigurateBase",
+    "alias": "configuratebase",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\ConfigurateBase\\Providers\\ConfigurateBaseServiceProvider"
+    ],
+    "files": []
+}

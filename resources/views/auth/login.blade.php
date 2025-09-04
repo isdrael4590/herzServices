@@ -95,7 +95,7 @@
         </div>
     </div>
     <footer class="c-footer">
-        <div>herZoft {{ date('Y') }} || Todos los derechos son reservados con <strong><a href="http://www.herzgroup.net/">Herz Group</a></strong></div>
+        <div>Herz_Cmms {{ date('Y') }} || Todos los derechos son reservados con <strong><a href="http://www.herzgroup.net/">Herz Group</a></strong></div>
     
         <div class="mfs-auto d-md-down-none">Version <strong class="text-danger">1.0</strong></div>
     </footer>

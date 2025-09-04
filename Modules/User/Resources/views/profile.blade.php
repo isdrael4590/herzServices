@@ -4,6 +4,24 @@
 
 @section('third_party_stylesheets')
     @include('includes.filepond-css')
+    <style>
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .password-input {
+            padding-right: 40px;
+        }
+    </style>
 @endsection
 
 @section('breadcrumb')
@@ -30,26 +48,31 @@
 
                             <div class="form-group">
                                 <label for="image">Imagen de Perfil <span class="text-danger">*</span></label>
-                                <img style="width: 100px;height: 100px;" class="d-block mx-auto img-thumbnail img-fluid rounded-circle mb-2" src="{{ auth()->user()->getFirstMediaUrl('avatars') }}" alt="Profile Image">
+                                <img style="width: 100px;height: 100px;"
+                                    class="d-block mx-auto img-thumbnail img-fluid rounded-circle mb-2"
+                                    src="{{ auth()->user()->getFirstMediaUrl('avatars') }}" alt="Profile Image">
                                 <input id="image" type="file" name="image" data-max-file-size="500KB">
                             </div>
 
                             <div class="form-group">
                                 <label for="name">Nombre <span class="text-danger">*</span></label>
-                                <input class="form-control" type="text" name="name" required value="{{ auth()->user()->name }}">
+                                <input class="form-control" type="text" name="name" required
+                                    value="{{ auth()->user()->name }}">
                                 @error('name')
-                                <p class="text-danger">{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
                                 <label for="email">Email <span class="text-danger">*</span></label>
-                                <input class="form-control" type="email" name="email" required value="{{ auth()->user()->email }}">
+                                <input class="form-control" type="email" name="email" required
+                                    value="{{ auth()->user()->email }}">
                                 @error('email')
-                                <p class="text-danger">{{ $message }}</p>
+                                    <p class="text-danger">{{ $message }}</p>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Actualización Perfil <i class="bi bi-check"></i></button>
+                                <button type="submit" class="btn btn-primary">Actualización Perfil <i
+                                        class="bi bi-check"></i></button>
                             </div>
                         </form>
                     </div>
@@ -62,28 +85,41 @@
                             @csrf
                             @method('patch')
                             <div class="form-group">
-                                <label for="current_password">Contraseña Actual <span class="text-danger">*</span></label>
-                                <input type="password" class="form-control" name="current_password" required>
-                                @error('current_password')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <div class="password-toggle">
+                                    <label for="current_password">Contraseña Actual <span
+                                            class="text-danger">*</span></label>
+                                    <input type="password" class="form-control" name="current_password" required>
+                                    <i class="bi bi-eye password-toggle-icon" id="togglePassword"></i>
+                                    @error('current_password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
                                 <label for="password">Nueva Contraseña <span class="text-danger">*</span></label>
-                                <input class="form-control" type="password" name="password" required>
-                                @error('password')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <div class="password-toggle">
+
+                                    <input class="form-control" type="password" name="password" required>
+                                    <i class="bi bi-eye password-toggle-icon" id="togglePassword"></i>
+                                    @error('password')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
-                                <label for="password_confirmation">Confirmar Contraseña <span class="text-danger">*</span></label>
-                                <input class="form-control" type="password" name="password_confirmation" required>
-                                @error('password_confirmation')
-                                <p class="text-danger">{{ $message }}</p>
-                                @enderror
+                                <label for="password_confirmation">Confirmar Contraseña <span
+                                        class="text-danger">*</span></label>
+                                <div class="password-toggle">
+                                    <input class="form-control" type="password" name="password_confirmation" required>
+                                    <i class="bi bi-eye password-toggle-icon" id="togglePassword"></i>
+                                    @error('password_confirmation')
+                                        <p class="text-danger">{{ $message }}</p>
+                                    @enderror
+                                </div>
                             </div>
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary">Actualizar contraseña <i class="bi bi-check"></i></button>
+                                <button type="submit" class="btn btn-primary">Actualizar contraseña <i
+                                        class="bi bi-check"></i></button>
                             </div>
                         </form>
                     </div>
@@ -95,6 +131,5 @@
 
 @push('page_scripts')
     @include('includes.filepond-js')
+  
 @endpush
-
-

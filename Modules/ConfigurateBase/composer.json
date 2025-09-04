@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/configuratebase",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\ConfigurateBase\\": "",
+            "Modules\\ConfigurateBase\\App\\": "app/",
+            "Modules\\ConfigurateBase\\Database\\Factories\\": "database/factories/",
+            "Modules\\ConfigurateBase\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\ConfigurateBase\\Tests\\": "tests/"
+        }
+    }
+}

@@ -7,7 +7,7 @@
 ## Instalación
 
 1. Instale Docker Engine para su plataforma como se explica en el siguiente [link](https://docs.docker.com/engine/install/)
-2. Clone los archivos de este repositorio, por ejemplo con `git clone git@github.com:isdrael4590/herzoft.git`
+2. Clone los archivos de este repositorio, por ejemplo con `git clone git@github.com:isdrael4590/herzServices.git`
 3. Instale las dependencias de software necesarias para correr el proyecto, por ejemplo para Ubuntu:
 
     ```bash
@@ -66,7 +66,7 @@
 3. Generar el certificado HTTPS de Let's Encrypt con el siguiente comando`docker compose -f docker-compose.prod.yml run --rm certbot`
 4. Reiniciar nginx con `docker compose -f docker-compose.prod.yml exec nginx nginx -s reload` para recargar las configuraciones.
 
-> **Important Note:** "herZoft" uses Laravel Snappy Package for PDFs. If you are using Linux then no configuration is needed. But in other Operating Systems please refer to [Laravel Snappy Documentation](https://github.com/barryvdh/laravel-snappy).
+> **Important Note:** "herzServices" uses Laravel Snappy Package for PDFs. If you are using Linux then no configuration is needed. But in other Operating Systems please refer to [Laravel Snappy Documentation](https://github.com/barryvdh/laravel-snappy).
 >
 ## Credenciales
 
@@ -78,9 +78,62 @@ Features
 
 # License
 
-Comercial, Todos los derechos reservados Herzoft© 2024
+Comercial, Todos los derechos reservados herzServices 2024
 
 # Problemas conocidos
 
 - No se cargan los códigos RUMED descritos en la carpeta `init/codigos_rumed.sql`: Por favor borre el volumen `docker compose down && docker volume rm herzoft_sail-mysql`
 - En caso de error 500, `docker compose -f docker-compose.prod.yml exec app php artisan cache:clear` o revisar los permisos de la carpeta `storage/logs`
+
+
+
+# crear moduolos 
+# Entrar al contenedor
+'docker exec -it herzservices-app-1 bash'
+# Una vez dentro del contenedor, ejecutar:
+'php artisan module:make ConfigurateBase'
+
+# Para salir del contenedor
+'exit'
+
+# Crear el archivo webpack.mix.js manualmente
+docker exec -it herzservices-app-1 bash -c "cat > Modules/ConfigurateBase/webpack.mix.js << 'EOF'
+const mix = require('laravel-mix');
+
+/*
+ |--------------------------------------------------------------------------
+ | Mix Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Mix provides a clean, fluent API for defining some Webpack build steps
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for the application as well as bundling up all the JS files.
+ |
+ */
+
+mix.setPublicPath('../../public').setResourceRoot('../');
+
+mix.js(__dirname + '/Resources/assets/js/app.js', 'js/configuratebase.js')
+    .sass(__dirname + '/Resources/assets/sass/app.scss', 'css/configuratebase.css');
+
+if (mix.inProduction()) {
+    mix.version();
+}
+EOF"
+
+# Verificar que el módulo se creó correctamente
+# Ver la estructura del módulo
+docker exec -it herzservices-app-1 ls -la Modules/ConfigurateBase/
+
+# Ver si el módulo está registrado
+docker exec -it herzservices-app-1 php artisan module:list
+
+# Habilitar el módulo (si no está habilitado automáticamente):
+
+docker exec -it herzservices-app-1 php artisan module:enable ConfigurateBase
+ # Crear controladores dentro del módulo:
+
+ docker exec -it herzservices-app-1 php artisan module:make-controller ConfigurateController ConfigurateBase
+
+ # Crear modelos dentro del módulo:
+ docker exec -it herzservices-app-1 php artisan module:make-model Configuration ConfigurateBase

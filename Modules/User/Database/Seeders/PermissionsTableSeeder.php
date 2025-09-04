@@ -20,40 +20,24 @@ class PermissionsTableSeeder extends Seeder
             //User Mangement
             'edit_own_profile',
             'access_user_management',
-            'show_Dashboard',
-            'access_user',
-            'access_reports',
+            'create_user_management',
+            'edit_user_management',
+            'delete_user_management',
+
+
+
+            //roles
             'access_roles',
-            'access_machines',
-            'access_machine_categories',
-            'add_image',
-            'print_barcodes',
-            'access_settings',
-            'access_brands',
-            'access_informats',
-            'access_informat_areas',
-            'access_informat_institutes',
-            'access_admin',
-
-// roles
-
             'create_roles',
-            'show_roles',
             'edit_roles',
             'delete_roles',
-            'print_roles',
 
 
-            //  User
+            //Settings
+            'access_settings',
+            //Units
+            'access_informats_units',
 
-            'create',
-            'show',
-            'edit',
-            'delete',
-            'print',
-
-
-            // 
 
 
 
@@ -66,11 +50,41 @@ class PermissionsTableSeeder extends Seeder
             ]);
         }
 
-        $role = Role::create([
+        $adminrole = Role::create([
             'name' => 'Admin'
         ]);
 
-        $role->givePermissionTo($permissions);
-        $role->revokePermissionTo('access_user_management');
+        $adminrole->givePermissionTo($permissions);
+
+        $supervisorRole = Role::create(['name' => 'GerenteZonal']);
+        $supervisorPermission = [
+            //User Mangement
+            'edit_own_profile',
+            'access_user_management',
+            'create_user_management',
+            'edit_user_management',
+
+
+
+
+
+        ];
+        $supervisorRole->givePermissionTo($supervisorPermission);
+
+
+        $usuarioRole = Role::create(['name' => 'GerenteNacional']);
+        $usuarioPermission = [
+
+            'edit_own_profile',
+            'access_user_management',
+            'create_user_management',
+            'edit_user_management',
+
+
+
+
+        ];
+        $usuarioRole->givePermissionTo($usuarioPermission);
+        
     }
 }

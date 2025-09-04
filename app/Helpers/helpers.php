@@ -1,26 +1,6 @@
 <?php
 
-if (!function_exists('testbds')) {
-    function testbds()
-    {
-        $testbds = cache()->remember('testbds', 24 * 60, function () {
-            return \Modules\Testbd\Entities\Testbd::firstOrFail();
-        });
 
-        return $testbds;
-    }
-}
-
-if (!function_exists('institutes')) {
-    function institutes()
-    {
-        $institutes = cache()->remember('institutes', 24 * 60, function () {
-            return \Modules\Informat\Entities\Institute::firstOrFail();
-        });
-
-        return $institutes;
-    }
-}
 
 if (!function_exists('settings')) {
     function settings()
@@ -33,38 +13,8 @@ if (!function_exists('settings')) {
     }
   
 }
-if (!function_exists('machines')) {
-    function machines()
-    {
-        $machines = cache()->remember('machines', 24 * 60, function () {
-            return \Modules\Informat\Entities\Machine::firstOrFail();
-        });
 
-        return $machines;
-    }
-}
 
-if (!function_exists('labelqrs')) {
-    function labelqrs()
-    {
-        $labelqrs = cache()->remember('labelqrs', 24 * 60, function () {
-            return \Modules\Labelqr\Entities\Labelqr::firstOrFail();
-        });
-
-        return $labelqrs;
-    }
-}
-
-if (!function_exists('expeditions')) {
-    function expeditions()
-    {
-        $expeditions = cache()->remember('expeditions', 24 * 60, function () {
-            return \Modules\Expedition\Entities\Expedition::firstOrFail();
-        });
-
-        return $expeditions;
-    }
-}
 
 if (!function_exists('format_currency')) {
     function format_currency($value, $format = true)

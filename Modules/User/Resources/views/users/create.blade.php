@@ -3,9 +3,26 @@
 @section('title', 'Create User')
 
 @section('third_party_stylesheets')
-    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet"/>
-    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css"
-          rel="stylesheet">
+    <link href="https://unpkg.com/filepond/dist/filepond.css" rel="stylesheet" />
+    <link href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css" rel="stylesheet">
+    <style>
+        .password-toggle {
+            position: relative;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .password-input {
+            padding-right: 40px;
+        }
+    </style>
 @endsection
 
 @section('breadcrumb')
@@ -39,69 +56,74 @@
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="form-group">
-                                        <label for="email">Email <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="email" name="email" required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="password">Contraseña <span class="text-danger">*</span></label>
-                                        <input class="form-control" type="password" name="password" required>
-                                    </div>
-                                </div>
-                                <div class="col-lg-6">
-                                    <div class="form-group">
-                                        <label for="password_confirmation">Confirmar Contraseña <span
-                                                class="text-danger">*</span></label>
-                                        <input class="form-control" type="password" name="password_confirmation"
-                                               required>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="role">Role <span class="text-danger">*</span></label>
-                                <select class="form-control" name="role" id="role" required>
-                                    <option value="" selected disabled>Seleccinar Role</option>
-                                    @foreach(\Spatie\Permission\Models\Role::where('name', '!=', 'Super Admin')->get() as $role)
-                                        <option value="{{ $role->name }}">{{ $role->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="is_active">Estado <span class="text-danger">*</span></label>
-                                <select class="form-control" name="is_active" id="is_active" required>
-                                    <option value="" selected disabled>Seleccionar Estado</option>
-                                    <option value="1">Activo</option>
-                                    <option value="2">Desactivado</option>
-                                </select>
+                                            <label for="email">Email <span class="text-danger">*</span></label>
+                                            <input class="form-control" type="email" name="email" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="password">Contraseña <span class="text-danger">*</span></label>
+                                            <div class="password-toggle">
+                                                <input class="form-control password-input" type="password" name="password"
+                                                    id="password" required>
+                                                <i class="bi bi-eye password-toggle-icon" id="togglePassword"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label for="password_confirmation">Confirmar Contraseña <span
+                                                    class="text-danger">*</span></label>
+                                            <input class="form-control password-input" type="password"
+                                                name="password_confirmation" id="password_confirmation" required>
+                                            <i class="bi bi-eye password-toggle-icon" id="togglePasswordConfirmation"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="role">Role <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="role" id="role" required>
+                                        <option value="" selected disabled>Seleccinar Role</option>
+                                        @foreach (\Spatie\Permission\Models\Role::where('name', '!=', 'Super Admin')->get() as $role)
+                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="is_active">Estado <span class="text-danger">*</span></label>
+                                    <select class="form-control" name="is_active" id="is_active" required>
+                                        <option value="" selected disabled>Seleccionar Estado</option>
+                                        <option value="1">Activo</option>
+                                        <option value="2">Desactivado</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="image">Imagen de Perfil <span class="text-danger">*</span></label>
+                                    <input id="image" type="file" name="image" data-max-file-size="500KB">
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="form-group">
-                                <label for="image">Imagen de Perfil <span class="text-danger">*</span></label>
-                                <input id="image" type="file" name="image" data-max-file-size="500KB">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </form>
     </div>
 @endsection
 
 @section('third_party_scripts')
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
-    <script
-        src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
-    <script
-        src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-size/dist/filepond-plugin-file-validate-size.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-file-validate-type/dist/filepond-plugin-file-validate-type.js"></script>
     <script src="https://unpkg.com/filepond/dist/filepond.js"></script>
 @endsection
 
@@ -124,7 +146,44 @@
                 }
             }
         });
+
+        // Toggle para mostrar/ocultar contraseñas
+        function togglePasswordVisibility(inputId, iconId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(iconId);
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('bi-eye');
+                icon.classList.add('bi-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('bi-eye-slash');
+                icon.classList.add('bi-eye');
+            }
+        }
+
+        // Event listeners para los toggles de contraseña
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            togglePasswordVisibility('password', 'togglePassword');
+        });
+
+        document.getElementById('togglePasswordConfirmation').addEventListener('click', function() {
+            togglePasswordVisibility('password_confirmation', 'togglePasswordConfirmation');
+        });
+
+        // Validación de contraseñas coincidentes
+        document.getElementById('password_confirmation').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+
+            if (password !== confirmPassword && confirmPassword !== '') {
+                this.setCustomValidity('Las contraseñas no coinciden');
+                this.classList.add('is-invalid');
+            } else {
+                this.setCustomValidity('');
+                this.classList.remove('is-invalid');
+            }
+        });
     </script>
 @endpush
-
-

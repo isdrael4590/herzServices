@@ -7,7 +7,7 @@ return [
      * Shared translations.
      *
      */
-    'title' => 'herZoft',
+    'title' => 'herzServices',
     'next' => 'Next Step',
     'back' => 'Previous',
     'finish' => 'Install',
@@ -22,7 +22,7 @@ return [
      */
     'welcome' => [
         'templateTitle' => 'Welcome',
-        'title'   => 'Install herZoft',
+        'title'   => 'Install herzServices',
         'message' => 'Easy Installation and Setup Wizard.',
         'next'    => 'Check Requirements',
     ],

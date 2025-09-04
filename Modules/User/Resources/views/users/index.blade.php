@@ -20,7 +20,7 @@
                 <div class="card">
                     <div class="card-body">
                         <!-- Button trigger modal -->
-                        @can('create')
+                        @can('create_user_management')
                             <a href="{{ route('users.create') }}" class="btn btn-primary">
                                 Añadir Usuario <i class="bi bi-plus"></i>
                             </a>

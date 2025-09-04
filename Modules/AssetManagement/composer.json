@@ -1,0 +1,31 @@
+{
+    "name": "nwidart/assetmanagement",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nicolas Widart",
+            "email": "n.widart@gmail.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\AssetManagement\\": "",
+            "Modules\\AssetManagement\\App\\": "app/",
+            "Modules\\AssetManagement\\Database\\Factories\\": "database/factories/",
+            "Modules\\AssetManagement\\Database\\Seeders\\": "database/seeders/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Modules\\AssetManagement\\Tests\\": "tests/"
+        }
+    }
+}

@@ -22,4 +22,43 @@
             }
         }
     });
+
+    // Toggle para mostrar/ocultar contraseñas
+    function togglePasswordVisibility(inputId, iconId) {
+        const input = document.getElementById(inputId);
+        const icon = document.getElementById(iconId);
+
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('bi-eye');
+            icon.classList.add('bi-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('bi-eye-slash');
+            icon.classList.add('bi-eye');
+        }
+    }
+
+    // Event listeners para los toggles de contraseña
+    document.getElementById('togglePassword').addEventListener('click', function() {
+        togglePasswordVisibility('password', 'togglePassword');
+    });
+
+    document.getElementById('togglePasswordConfirmation').addEventListener('click', function() {
+        togglePasswordVisibility('password_confirmation', 'togglePasswordConfirmation');
+    });
+
+    // Validación de contraseñas coincidentes
+    document.getElementById('password_confirmation').addEventListener('input', function() {
+        const password = document.getElementById('password').value;
+        const confirmPassword = this.value;
+
+        if (password !== confirmPassword && confirmPassword !== '') {
+            this.setCustomValidity('Las contraseñas no coinciden');
+            this.classList.add('is-invalid');
+        } else {
+            this.setCustomValidity('');
+            this.classList.remove('is-invalid');
+        }
+    });
 </script>

@@ -6,8 +6,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
-use Modules\Machine\Entities\Machine;
-use Modules\Machine\Observers\MachineObserver;
+use Modules\Product\Entities\Product;
+use Modules\Product\Observers\ProductObserver;
 
 class EventServiceProvider extends ServiceProvider
 {
