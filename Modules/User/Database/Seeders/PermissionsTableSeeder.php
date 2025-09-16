@@ -18,23 +18,36 @@ class PermissionsTableSeeder extends Seeder
     {
         $permissions = [
             //User Mangement
-            'edit_own_profile',
+
             'access_user_management',
+            'access_roles',
+            'access_settings',
+
+
+
+
+            'create',
+            'edit',
+            'delete',
+            'view',
+
+
+
             'create_user_management',
             'edit_user_management',
             'delete_user_management',
-
+            'edit_own_profile',
 
 
             //roles
-            'access_roles',
+            
             'create_roles',
             'edit_roles',
             'delete_roles',
 
 
             //Settings
-            'access_settings',
+            
             //Units
             'access_informats_units',
 
@@ -85,6 +98,5 @@ class PermissionsTableSeeder extends Seeder
 
         ];
         $usuarioRole->givePermissionTo($usuarioPermission);
-        
     }
 }
