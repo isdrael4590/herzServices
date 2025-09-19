@@ -25,6 +25,12 @@ class SuperUserSeeder extends Seeder
             'password' => Hash::make(docker_secret('/run/secrets/admin_password')),
             'is_active' => 1
         ]);
+        $user2 = User::create([
+            'name' => 'Admin',
+            'email' => 'ferisdra@hotmail.com',
+            'password' => Hash::make('12345678'),
+            'is_active' => 1
+        ]);
 
         $superAdmin = Role::create([
             'name' => 'Super Admin'
@@ -32,5 +38,6 @@ class SuperUserSeeder extends Seeder
 
         $superAdmin->givePermissionTo(Permission::all());
         $user->assignRole($superAdmin);
+        $user2->assignRole($superAdmin);
     }
 }
